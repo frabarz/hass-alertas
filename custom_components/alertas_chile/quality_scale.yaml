@@ -1,0 +1,46 @@
+# Home Assistant quality scale: Alertas Chile (target Silver, Bronze minimum).
+rules:
+  appropriate-polling:
+    status: done
+    comment: Push WebSocket feed; no polling interval is used.
+  brand-assets:
+    status: done
+    comment: Local brand/ ships icon.png and icon@2x.png.
+  config-flow:
+    status: done
+    comment: Single-instance flow validates the relay handshake before creating the entry.
+  devices:
+    status: done
+    comment: All entities share one Alertas Chile relay device.
+  diagnostics:
+    status: done
+    comment: Connection telemetry and the public alert snapshot are exported.
+  discovery:
+    status: todo
+    comment: Public cloud push feed without a local discovery transport.
+  documentation:
+    status: done
+    comment: docs/ covers install, sources, entities, dashboards, and troubleshooting.
+  entity-device-class:
+    status: done
+    comment: Safety, connectivity, and timestamp device classes are set.
+  reauthentication-flow:
+    status: exempt
+    comment: The relay is unauthenticated; there is no session to reauthenticate.
+  reconfiguration-flow:
+    status: exempt
+    comment: The only configurable setting (source selection) uses the options flow.
+  repair-issues:
+    status: done
+    comment: Persistent repair issue after repeated relay reconnect failures.
+  stable-device-id:
+    status: done
+    comment: Device and entity unique ids derive from the config entry id and source.
+  test-before-configure:
+    status: done
+    comment: The flow completes a WebSocket handshake before creating the entry.
+  test-coverage:
+    status: done
+    comment: Unit suite covers models, relay parsing, coordinator, entities, flows, diagnostics, and packaging.
+  unique-config-entry:
+    status: done

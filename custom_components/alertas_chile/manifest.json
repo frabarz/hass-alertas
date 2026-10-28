@@ -1,0 +1,13 @@
+{
+  "domain": "alertas_chile",
+  "name": "Alertas Chile",
+  "codeowners": ["@frabarz"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/frabarz/hass-alertas",
+  "integration_type": "service",
+  "iot_class": "cloud_push",
+  "issue_tracker": "https://github.com/frabarz/hass-alertas/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

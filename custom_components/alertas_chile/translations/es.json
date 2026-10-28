@@ -1,0 +1,79 @@
+{
+  "title": "Alertas Chile",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectar con Alertas Chile",
+        "description": "Esta integración se suscribe al relay público de Alertas Chile (CSN, Sismo Detector, SENAPRED SAE y boletines de tsunami). No se necesita cuenta ni credenciales. El relay se probará antes de completar la configuración."
+      }
+    },
+    "error": {
+      "cannot_connect": "No se pudo conectar al relay de Alertas Chile. Revise su conexión e intente nuevamente."
+    },
+    "abort": {
+      "already_configured": "Alertas Chile ya está configurado."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opciones de Alertas Chile",
+        "description": "Elija qué fuentes de alerta crean entidades. Las fuentes desactivadas se siguen recibiendo; solo se omiten sus entidades.",
+        "data": {
+          "sources": "Fuentes de alerta"
+        }
+      }
+    },
+    "error": {
+      "no_sources": "Seleccione al menos una fuente de alerta."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "connection": {
+        "name": "Conexión"
+      },
+      "csn_alert": {
+        "name": "CSN"
+      },
+      "sismo_detector_alert": {
+        "name": "Sismo Detector"
+      },
+      "senapred_sae_alert": {
+        "name": "SENAPRED SAE"
+      },
+      "tsunami_alert": {
+        "name": "Tsunami"
+      }
+    },
+    "sensor": {
+      "active_alerts": {
+        "name": "Alertas activas"
+      },
+      "last_alert": {
+        "name": "Última alerta"
+      },
+      "last_message": {
+        "name": "Último mensaje"
+      }
+    },
+    "event": {
+      "alert": {
+        "name": "Alerta"
+      }
+    }
+  },
+  "issues": {
+    "backend_unreachable": {
+      "title": "Relay de Alertas Chile inalcanzable",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Reintentar la conexión al relay",
+            "description": "El relay en {url} ha fallado varias reconexiones seguidas. Confirme para recargar la entrada y reintentar."
+          }
+        }
+      }
+    }
+  }
+}

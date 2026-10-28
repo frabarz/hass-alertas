@@ -1,0 +1,37 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "connection": {
+        "default": "mdi:lan-connect"
+      },
+      "csn_alert": {
+        "default": "mdi:pulse"
+      },
+      "sismo_detector_alert": {
+        "default": "mdi:waveform"
+      },
+      "senapred_sae_alert": {
+        "default": "mdi:cellphone-message"
+      },
+      "tsunami_alert": {
+        "default": "mdi:waves"
+      }
+    },
+    "sensor": {
+      "active_alerts": {
+        "default": "mdi:alert-multiple"
+      },
+      "last_alert": {
+        "default": "mdi:alert-outline"
+      },
+      "last_message": {
+        "default": "mdi:clock-outline"
+      }
+    },
+    "event": {
+      "alert": {
+        "default": "mdi:alert"
+      }
+    }
+  }
+}

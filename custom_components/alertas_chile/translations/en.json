@@ -1,0 +1,79 @@
+{
+  "title": "Alertas Chile",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Alertas Chile",
+        "description": "This integration subscribes to the public Alertas Chile relay (CSN, Sismo Detector, SENAPRED SAE, and tsunami bulletins). No account or credentials are needed. The relay will be tested before setup completes."
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach the Alertas Chile relay. Check your connection and try again."
+    },
+    "abort": {
+      "already_configured": "Alertas Chile is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Alertas Chile options",
+        "description": "Choose which alert sources create entities. Disabled sources are still received by the relay; only their entities are omitted.",
+        "data": {
+          "sources": "Alert sources"
+        }
+      }
+    },
+    "error": {
+      "no_sources": "Select at least one alert source."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "connection": {
+        "name": "Connection"
+      },
+      "csn_alert": {
+        "name": "CSN"
+      },
+      "sismo_detector_alert": {
+        "name": "Sismo Detector"
+      },
+      "senapred_sae_alert": {
+        "name": "SENAPRED SAE"
+      },
+      "tsunami_alert": {
+        "name": "Tsunami"
+      }
+    },
+    "sensor": {
+      "active_alerts": {
+        "name": "Active alerts"
+      },
+      "last_alert": {
+        "name": "Last alert"
+      },
+      "last_message": {
+        "name": "Last message"
+      }
+    },
+    "event": {
+      "alert": {
+        "name": "Alert"
+      }
+    }
+  },
+  "issues": {
+    "backend_unreachable": {
+      "title": "Alertas Chile relay unreachable",
+      "fix_flow": {
+        "step": {
+          "confirm": {
+            "title": "Retry the relay connection",
+            "description": "The relay at {url} has failed several reconnects in a row. Confirm to reload the entry and retry."
+          }
+        }
+      }
+    }
+  }
+}
