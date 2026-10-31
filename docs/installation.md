@@ -22,29 +22,28 @@ cp -r custom_components/alertas_chile /path/to/homeassistant/config/custom_compo
 
 ## NixOS
 
-The flake does not define a custom NixOS service. It exposes an overlay that
-adds the component to the same `pkgs.home-assistant-custom-components`
-namespace nixpkgs uses for packaged integrations, so the stock Home Assistant
-module handles installation:
+The flake exposes the integration as a package. Add it to the stock Home
+Assistant module's `customComponents`:
 
 ```nix
 {
-  inputs.hass-alertas.url = "github:frabarz/hass-alertas";
+  inputs.hass-alertas = {
+    url = "github:frabarz/hass-alertas";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
-  # In your NixOS configuration:
-  nixpkgs.overlays = [ inputs.hass-alertas.overlays.default ];
-
+  # In your NixOS configuration (`inputs` is available via specialArgs):
   services.home-assistant = {
     enable = true;
     customComponents = [
-      pkgs.home-assistant-custom-components.alertas_chile
+      inputs.hass-alertas.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
 }
 ```
 
-The package is built against your own `home-assistant` and nixpkgs, so there
-is no Home Assistant version skew. Source selection stays in the Home
+Keep `inputs.nixpkgs.follows = "nixpkgs"` so the component is built against the
+same Home Assistant version you run. Source selection stays in the Home
 Assistant UI (there is no declarative YAML for this integration).
 
 Or build the component derivation directly:

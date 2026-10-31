@@ -83,26 +83,6 @@
         };
     in
     {
-      # Injects alertas_chile into the same namespace nixpkgs uses for
-      # packaged custom integrations, so consumers can use the stock HA
-      # module:
-      #   nixpkgs.overlays = [ inputs.hass-alertas.overlays.default ];
-      #   services.home-assistant.customComponents = [
-      #     pkgs.home-assistant-custom-components.alertas_chile
-      #   ];
-      overlays.default = final: prev: {
-        home-assistant-custom-components = prev.home-assistant-custom-components.extend (
-          _self: _super: {
-            alertas_chile = mkComponent final (
-              final.lib.fileset.toSource {
-                root = ./.;
-                fileset = final.lib.fileset.unions [ ./custom_components ];
-              }
-            );
-          }
-        );
-      };
-
       packages = nixpkgs.lib.genAttrs linuxSystems (
         system:
         let
